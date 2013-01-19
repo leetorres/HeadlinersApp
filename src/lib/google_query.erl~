@@ -1,0 +1,104 @@
+-module(google_query).
+-compile(export_all).
+-include_lib("xmerl/include/xmerl.hrl").
+test() ->
+    get_google("bear%20cat").
+
+get_google(KeyWord) ->
+  re:replace(A, " ", "+", [global, {return, list}]),
+    ssl:start(),
+    inets:start(),
+% Body is the results    
+    case httpc:request(get, {build_google_url(Key),[]},[{timeout, 6000}],[]) of 
+	{ok, {_,_,Body}} -> parse_google(Body);
+	Other -> {error, Other} 
+    end.
+space_detect(KeyWord)->
+    List1=string:tokens(KeyWord,"%20"),
+    List2=putparse(List1,[]),
+    lists:concat(List2).
+putparse([H|[]],List)->
+   lists:reverse( [H|List]);
+putparse([Head|Tail],List)->
+    Head1=Head++"+",
+    putparse(Tail,[Head1|List]).
+    
+% FUNCTION NAME: build_google_url
+% Builds a google search url/query
+% In this case it only reply 10 records and only display the first 1's link
+% I specify google return JSON which you have choose to let it reply alter 
+% Alternative JSON or ATOM.
+build_google_url(KeyWord) -> 
+    "https://www.googleapis.com/customsearch/v1?key=AIzaSyA5FwexYgHJgHRThODy5I_5_gq2RPwWNq0&cx=013036536707430787589:_pqjad5hr1a&alt=atom&q=" ++ KeyWord.
+%fields=items(link,title,snippet)&
+parse_google(Body)->
+%   io:format("~s~n",[Body]),
+%    M=erlsom:simple_form(Body),
+    {Xml,_} = xmerl_scan:string(Body),
+%    io:format("~p~n",[Xml]),
+    Elements = Xml#xmlElement.content,
+    getresult(Elements,[],[],[]).
+
+getresult([#xmlElement{name=entry,content=Content}|Rest],Ids,Titles,Summarys)->
+   Id=lists:append(getid(Content)),
+   Title=lists:append(gettitle(Content)),
+   Summary=lists:append(getsummary(Content)),
+   % io:format("~p~n",[Id]),
+   getresult(Rest,[Id|Ids],[Title|Titles],[Summary|Summarys]);
+  % io:format("~p~n",[Title]);
+getresult([_ | Rest],Ids,Titles,Summarys) ->
+    getresult(Rest,Ids,Titles,Summarys);
+getresult([],Ids,Titles,Summarys) ->
+    io:format("~p~n",[Ids]),
+    io:format("~p~n",[Titles]),
+    io:format("~p~n",[Summarys]).
+    %get_all(Ids,Titles,Summarys).
+	
+
+gettitle([#xmlElement{name=title,content=Content}|Rest])->
+    Title=combinetitle(Content),
+    %io:format("~p~n",[lists:flatten(Title)])
+    gettitle(Rest),
+    Title;
+    
+gettitle([_ | Rest]) ->
+    gettitle(Rest);
+gettitle([]) ->
+     [].
+getid([#xmlElement{name=id,content=Ids}|Rest])->
+    Id=combinetitle(Ids),
+    %io:format("~p~n",[lists:flatten(Id)]),
+    getid(Rest),
+    Id;
+getid([_ | Rest]) ->
+    getid(Rest);
+getid([]) ->
+     [].
+getsummary([#xmlElement{name=summary,content=Content}|Rest])->
+    Summary=combinetitle(Content),
+   % io:format("~p~n",[lists:flatten(Summary)]),
+    getsummary(Rest),
+    Summary;
+getsummary([_ | Rest]) ->
+    getsummary(Rest);
+getsummary([]) ->
+     [].
+combinetitle([#xmlText{value=Value}|Rest])->
+    [Value | combinetitle(Rest)];
+combinetitle([]) ->
+    [].
+get_all([H|T],[H1|T1],[H2|T2])->
+   
+    case boss_db:count(googles,[{link,'matches',H}]) of
+    0->
+    Google=google:new(id,H1,H,H2),
+    Google:save(),
+    W=[H1,H,H2],
+    get_all(T,T1,T2),
+    io:format("~s~n",[W]);
+	_Other ->
+            get_all(T,T1,T2)
+end.
+
+
+% [[{Element,Value} || #xmlElement{name=Element,content=Value1} <- XmlElem, #xmlText{value=Value} <- Value1] || #xmlElement{content=XmlElem} <- xmerl_xpath:s%tri% ng("//item", Body)].

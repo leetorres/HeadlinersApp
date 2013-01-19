@@ -1,0 +1,81 @@
+
+=INFO REPORT==== 14-Dec-2012::05:20:53 ===
+Starting Boss in development mode....
+
+=ERROR REPORT==== 14-Dec-2012::05:20:53 ===
+** Generic server <0.64.0> terminating 
+** Last message in was {'EXIT',<0.63.0>,
+                        {{badmatch,
+                          {error,
+                           {{badmatch,{error,connect_failed}},
+                            [{boss_db_controller,init,1,
+                              [{file,"src/boss_db_controller.erl"},{line,31}]},
+                             {gen_server,init_it,6,
+                              [{file,"gen_server.erl"},{line,304}]},
+                             {proc_lib,init_p_do_apply,3,
+                              [{file,"proc_lib.erl"},{line,227}]}]}}},
+                         [{poolboy,new_worker,2,
+                           [{file,"src/poolboy.erl"},{line,348}]},
+                          {poolboy,prepopulate,4,
+                           [{file,"src/poolboy.erl"},{line,370}]},
+                          {poolboy,init,2,
+                           [{file,"src/poolboy.erl"},{line,74}]},
+                          {gen_fsm,init_it,6,
+                           [{file,"gen_fsm.erl"},{line,361}]},
+                          {proc_lib,init_p_do_apply,3,
+                           [{file,"proc_lib.erl"},{line,227}]}]}}
+** When Server state == {state,
+                            {<0.64.0>,poolboy_sup},
+                            simple_one_for_one,
+                            [{child,undefined,boss_db_controller,
+                                 {boss_db_controller,start_link,
+                                     [[{size,5},
+                                       {max_overflow,10},
+                                       {adapter,mysql},
+                                       {cache_enable,false},
+                                       {shards,[]},
+                                       {is_master_node,true},
+                                       {db_database,"tester"},
+                                       {db_password,"root"},
+                                       {db_username,"root"},
+                                       {db_host,"local"},
+                                       {db_port,3306}]]},
+                                 temporary,brutal_kill,worker,
+                                 [boss_db_controller]}],
+                            {set,0,16,16,8,80,48,
+                                {[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],
+                                 []},
+                                {{[],[],[],[],[],[],[],[],[],[],[],[],[],[],
+                                  [],[]}}},
+                            0,1,[],poolboy_sup,
+                            {boss_db_controller,
+                                [{size,5},
+                                 {max_overflow,10},
+                                 {adapter,mysql},
+                                 {cache_enable,false},
+                                 {shards,[]},
+                                 {is_master_node,true},
+                                 {db_database,"tester"},
+                                 {db_password,"root"},
+                                 {db_username,"root"},
+                                 {db_host,"local"},
+                                 {db_port,3306}]}}
+** Reason for termination == 
+** {{badmatch,
+        {error,
+            {{badmatch,{error,connect_failed}},
+             [{boss_db_controller,init,1,
+                  [{file,"src/boss_db_controller.erl"},{line,31}]},
+              {gen_server,init_it,6,[{file,"gen_server.erl"},{line,304}]},
+              {proc_lib,init_p_do_apply,3,
+                  [{file,"proc_lib.erl"},{line,227}]}]}}},
+    [{poolboy,new_worker,2,[{file,"src/poolboy.erl"},{line,348}]},
+     {poolboy,prepopulate,4,[{file,"src/poolboy.erl"},{line,370}]},
+     {poolboy,init,2,[{file,"src/poolboy.erl"},{line,74}]},
+     {gen_fsm,init_it,6,[{file,"gen_fsm.erl"},{line,361}]},
+     {proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,227}]}]}
+
+=INFO REPORT==== 14-Dec-2012::05:20:53 ===
+    application: boss
+    exited: {shutdown,{boss_app,start,[normal,[]]}}
+    type: temporary

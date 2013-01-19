@@ -1,0 +1,260 @@
+<!--
+%%%-------------------------------------------------------------------
+%%% @author Lee, Robin, Chayi, Chris, David, Ashley
+%%% @copyright (C) 2012, Headliners
+%%% @doc
+%%% This displays the registration page.
+%%% @end
+%%%-------------------------------------------------------------------
+-->
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    <meta charset="utf-8">
+    <title>
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Le styles -->
+    <link href="/static/css/bootstrap.css" rel="stylesheet">
+    <style>
+      body { padding-top: 60px; /* 60px to make the container go all the way
+      to the bottom of the topbar */ }
+    </style>
+    <link href="/static/css/bootstrap-responsive.css" rel="stylesheet">
+    <style>
+      undefined
+    </style>
+  </head>
+  
+  <body>
+    <div class="navbar navbar-fixed-top navbar-inverse">
+      <div class="navbar-inner">
+        <div class="container" id="menuBar">
+          <a class="brand" href="/">
+            Headliners
+          </a>
+          <ul class="nav">
+            <li>
+              <a href="/">
+                Home
+              </a>
+            </li>
+            <li>
+              <a href="/getting_started">
+                Register
+              </a>
+            </li>
+
+            <li>
+              <a href="/about">
+                About
+              </a>
+            </li>
+            <li>
+              <a href="/contact">
+                Contact
+              </a>
+            </li>
+          </ul>
+          {% if loginStatus == "undefined" %}
+	  <div id="loginPanel">
+            <form class="navbar-form pull-right">
+              <input name="email" id="email" type="email" placeholder="Email" class="span2">
+              <input name="email" id="password" type="password" placeholder="Password" class="span2">
+              <button id="login" class="btn">
+		Sign in
+              </button>
+            </form>
+	  </div>
+         {% else %}
+	  <div id="accountPanel">
+	  <ul class="nav">
+	    <li>
+              <a href="/favorites">
+                Favorites
+              </a>
+            </li>
+	    <li >
+              <a href="/logout" id="logout">
+                Logout
+              </a>
+            </li>
+	  </ul>
+	  </div>
+	  {% endif %}
+	  
+        </div>
+      </div>
+    </div>
+    
+    <div align="center">
+      <p>
+	<b>
+	  <legend>
+	    <font size="5"> Get started!</font>
+	  </legend>
+	</b>
+      </p>
+    </div>
+    
+    {% if loginStatus == "undefined" %}
+    <div class="result-container" id="regForm" style="width:60%; margin-left: auto ; margin-right: auto ;">
+      <form align="center" class="well">
+	<fieldset>
+	  <p>
+	    <font size="4">
+	      <u>Register</u>
+	    </font>
+	  </p>
+	  <label>Please enter your email/username</label>
+	  <input id="regemail" type="email" placeholder="Email">
+	  <label>Please enter your password</label>
+	  <input id="regpassword" type="password" placeholder="Password">
+	  <label>Please enter your company</label>
+	  <input id="regcompany" type="text" placeholder="Company">
+	  <p><input class="btn btn-primary" id="register" value="Register »" type="submit"></p>
+	</fieldset>
+      </form>
+    </div>
+    {% else %}
+    <div>
+      <div id="regForm" class="result-container" style="width:60%; margin-left: auto ; margin-right: auto ;">
+      <form align="center" class="well">
+	<fieldset>
+	  <font size="4">
+	    <p>  
+	      <u>Register</u>
+	    </p>
+	    <p>
+	      Already logged in.
+	    </p>
+	  </font>
+	</fieldset>
+      </form>
+      </div>
+    </div>
+    {% endif %}
+
+    
+    <div align="left" style="width:60%">
+      © Headliners 2012
+    </div>
+</div>
+
+
+<!--/.fluid-container--><!-- Le javascript
+    ================================================== --><!-- Placed at the end of the document so the pages load faster -->
+    
+<script src="/static/js/bootstrap.js">
+</script>
+
+<script src="/static/js/jquery-1.8.2.js"></script>
+<script>
+    /*
+      Function that queries the database for a user account when a user tries to login.
+      If the login is successful, the upper menu panel reveals a favorites menu and the login
+      section disappers. Otherwise, an alert window appears and says that logging in was incorrectly
+      done.
+    */
+    function login(){
+	$(document).on('click', '#login', function(){
+	    var $email = $('#email').val();
+	    var $password = $('#password').val();
+
+	    $.ajax({
+		url: "/ajax/login/" + $email + "/" + $password,
+		dataType: "json",
+
+	    }).done(function(data){
+
+		if(data.result == "success"){
+
+		    $('#loginPanel').remove();
+		    var accountPanel = "<div id='accountPanel'> <ul class='nav'>	<li> <a href='/favorites'>" +
+			"Favorites </a> </li> <li > <a href='/logout' id='logout'> Logout </a> </li> </ul> </div>"
+		    $('#menuBar').append(accountPanel);
+		}
+		else
+		    alert('Incorrect email or password.\nTry again or go to the register page to open a new account.');
+
+	    });// end done
+
+	    return false;
+	});// end click
+    }
+
+/*
+Logout function that logs the user out of the system and adds the login panel to the top menu bar
+*/
+function logout(){
+
+    $(document).on('click', '#logout', function(){
+
+	$.ajax({
+	    url: "/ajax/logout/",
+	    dataType: "json",
+	    
+	}).done(function(data){
+
+	    $('#accountPanel').remove();
+	    
+	    if(data.result == "success"){
+	    var loginPanel = "<div id='loginPanel'><form class='navbar-form pull-right'>" +
+		"<input name='email'id='email' type='email' placeholder='Email' class='span2'>" +
+		"<input name='password' id='password' type='password' placeholder='Password' class='span2'>" +
+		"<button id ='login' class='btn'> Sign in </button>"  +
+		"</form></div>";
+	    $('#menuBar').append(loginPanel);
+	    }
+	});
+	return false
+    }); //end click
+}
+
+/*
+Function that registers a new user
+*/
+function register(){
+    $(document).on('click', '#register', function(){
+	var $email = $('#regemail').val();
+	var $password = $('#regpassword').val();
+	var $company = $('#regcompany').val();
+
+	$.ajax({
+	    url: "/ajax/register/" + $email + "/" + $password + "/" + $company,
+	    dataType: "json",
+	}).done(function(data){
+	    if(data.result == "success"){
+		alert("Registered!" + 
+		      "\n Email: " +    $email + 
+		      "\n Password: " + $password + 
+		      "\n Company: " +  $company);
+
+		$('#regForm').slideUp('normal', function(){ $(this).remove();});
+	    }else{
+		alert("error");
+	    }
+	});
+	return false
+    });
+}
+
+</script>
+<script>
+    $(document).ready(function(){
+
+	login(); //prepares the login function for use
+	logout(); //prepares the logout function for use
+	register(); //prepares the register function  for use
+    
+    }); //end ready
+</script>
+
+
+
+</body>
+
+</html>

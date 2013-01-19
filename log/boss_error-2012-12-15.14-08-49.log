@@ -1,0 +1,42 @@
+
+=INFO REPORT==== 15-Dec-2012::14:08:49 ===
+Starting Boss in development mode....
+
+=INFO REPORT==== 15-Dec-2012::14:08:49 ===
+Starting master services on headliners_app@arch
+
+=INFO REPORT==== 15-Dec-2012::14:08:49 ===
+SSL:[]
+
+=INFO REPORT==== 15-Dec-2012::14:08:49 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 15-Dec-2012::14:08:58 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 15-Dec-2012::14:08:58 ===
+GET / [headliners_app] 200 626ms
+
+=INFO REPORT==== 15-Dec-2012::14:09:04 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 15-Dec-2012::14:09:06 ===
+POST /search/result [headliners_app] 302 1627ms
+
+=INFO REPORT==== 15-Dec-2012::14:09:06 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 15-Dec-2012::14:09:06 ===
+GET /search/result/search-338 [headliners_app] 200 643ms
+
+=INFO REPORT==== 15-Dec-2012::14:09:07 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 15-Dec-2012::14:09:07 ===
+GET /ajax/get_favorites/ [headliners_app] 200 43ms
+
+=INFO REPORT==== 15-Dec-2012::14:09:17 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 15-Dec-2012::14:09:17 ===
+GET /ajax/login/user/password [headliners_app] 200 85ms

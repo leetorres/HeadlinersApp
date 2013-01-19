@@ -1,0 +1,1078 @@
+<!--
+%%%-------------------------------------------------------------------
+%%% @author Lee, Robin, Chayi, Chris, David, Ashley
+%%% @copyright (C) 2012, Headliners
+%%% @doc
+%%% This displays the result page.
+%%% @end
+%%%-------------------------------------------------------------------
+-->
+
+<!DOCTYPE html>
+<html lang="en"><head>
+  
+  <meta charset="utf-8">
+  <title>Bootstrap, from Twitter</title>
+
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <meta name="description" content="Search Result">
+
+  
+  <meta name="author" content="Headliners">
+
+<!-- Le styles -->
+  
+  <link href="/static/css/bootstrap.css" rel="stylesheet">
+
+  
+  <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+    </style>
+  
+  <link href="/static/css/bootstrap-responsive.css" rel="stylesheet">
+
+<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements --><!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]--><!-- Le fav and touch icons -->
+  
+</head><body>
+    <div class="navbar navbar-fixed-top navbar-inverse">
+      <div class="navbar-inner">
+        <div class="container" id="menuBar">
+          <a class="brand" href="/">
+            Headliners
+          </a>
+          <ul class="nav">
+            <li>
+              <a href="/">
+                Home
+              </a>
+            </li>
+            <li>
+              <a href="/getting_started">
+                Register
+              </a>
+            </li>
+
+            <li>
+              <a href="/about">
+                About
+              </a>
+            </li>
+            <li>
+              <a href="/contact">
+                Contact
+              </a>
+            </li>
+          </ul>
+	  {% if loginStatus == "undefined" %}
+	  <div id="loginPanel">
+          <form class="navbar-form pull-right" id="resultLogin">
+            <input name="email" id="email" type="email" placeholder="Email" class="span2">
+            <input name="password" id="password" type="password" placeholder="Password" class="span2">
+            <button id="login"  class="btn">
+              Sign in
+            </button>
+          </form>
+	  </div>
+	  {% else %}
+	  <div id="accountPanel">
+	  <ul class="nav">
+	    <li>
+              <a href="/favorites">
+                Favorites
+              </a>
+            </li>
+	    <li >
+              <a href="/logout" id="logout">
+                Logout
+              </a>
+            </li>
+	  </ul>
+	  </div>
+	  {% endif %}
+        </div>
+      </div>
+    </div>
+
+<ol id="toc">
+  <li class="current" id="twitterli"><a href="/result" id="twitterClick">Twitter</a></li>
+  <li id="googleli" ><a href="/result" id="googleClick">Google</a></li>
+  <li id="analyticsli" ><a href="/result" id="analyticsClick">Analytics</a></li>
+</ol>
+
+<div class="container-fluid">
+<div class="row-fluid">
+<div class="span3">
+<div class="well sidebar-nav">
+<ul class="nav nav-list">
+  {% block searches %}
+  <li class="nav-header">Search Term</li>
+    <form class="navbar" method="post" action="{% url action="result" %}" id="formSubmit">
+    <div class="control-group">
+      <label for="searchInput"></label>
+    <input name="searchInput" class="required" id="searchInput" type="text" value="{{searchWord}}" style="width:90%">
+    <input class="btn btn-primary" type="submit" id="submitButton" value="Submit"> 
+    </div>
+    <div style="display:none">
+      <input name="latitude" id="latitude" type="text" value={{latitude}}>
+      <input name="longitude" id="longitude" type="text" value={{longitude}}>
+    </div>
+    </form>
+    {% if searches %}
+  <li class="active"><a href="#">Saved Twitter/Google Searches</a></li>
+  {% for search in searches %}
+  
+  <li><a href="{{ search.id }}">{{search.search_text}}</a></li>
+ 
+  {% endfor %}
+  {% endif %}
+  
+  {% endblock %}
+  {% if mostLikedTweets %}
+  <li class="nav-header">Most Popular Tweets</li>
+  <br>
+  {% for tweet in mostLikedTweets %}
+  <div style="width:90%">
+    <img style="float:left; width: 20px; padding-right: 9px" src={{ tweet.profileimage_url }}> <p style="float:right; display:none" class="tweetDate">{{ tweet.created_at }}</p>
+  <p><a href="http://twitter.com/{{tweet.from_user}}"><b>{{tweet.fromuser_name}}</b></a> @{{tweet.from_user}}</p>
+    <p class="tweetText">{{tweet.text}}</p>
+    <div>
+    <p id="favCount" style="float:right">Headliner Favorites Count: {{tweet.likes}}</p></div>
+  </div>
+  <br>
+  <br>
+  <br>
+  {% endfor %}
+
+  {% endif %}
+</ul>
+</div>
+<!--/.well --> </div>
+<!--/span-->
+<div class="span9">
+<div class="result-container" id="twitter">
+<div id="TwitterTitle">
+<h1>Twitter Search Results:</h1>
+<br>
+</div>
+{% block body %}
+
+{% if tweets %}
+    {% for tweet in tweets %}
+
+        <!--Go through loop if user is not logged in-->
+        {% if loginStatus == "undefined" %}
+<div class="wellTwitter" id="tweets" style="width:90%">
+  <img style="float:left; width: 60px; padding-right: 9px" src={{ tweet.profileimage_url }}> <p style="float:right; display:none" class="tweetDate">{{ tweet.created_at }}</p>
+  <td><a href="http://twitter.com/{{tweet.from_user}}"><b>{{tweet.fromuser_name}}</b></a> @{{tweet.from_user}}</td>
+  <td><p class="tweetText">{{tweet.text }} </p></td>
+  <div class="clickPanel"><a href="http://www.headliners.se/{{tweet.fromuser_idstr}}" class="expand">Expand</a>
+    <p id="id_str" style="display:none">{{tweet.id_str}}</p>
+    <p id="favCount" style="float:right">Headliner Favorites Count: {{tweet.likes}}</p></div>
+</div>
+    {% else %}
+<div class="wellTwitter" id="tweets" style="width:90%">
+  <img style="float:left; width: 60px; padding-right: 9px" src={{ tweet.profileimage_url }}> <p style="float:right; display:none" class="tweetDate">{{ tweet.created_at }}</p>
+  <td><a href="http://twitter.com/{{tweet.from_user}}"><b>{{tweet.fromuser_name}}</b></a> @{{tweet.from_user}}</td>
+  <td><p class="tweetText">{{tweet.text }} </p></td>
+  <div class="clickPanel">
+  <a href="http://www.headliners.se/{{tweet.fromuser_idstr}}" class="expand">Expand</a>
+
+  <img class="beforefavorite" src="/static/img/beforefavorite.png"><a href="http://www.headliners.se/{{tweet.id_str}}" class="favorite"> Favorite</a>
+  <p id="id_str" style="display:none">{{tweet.id_str}}</p>
+  <p id="favCount" style="float:right">Headliner Favorites Count: {{tweet.likes}}</p>
+  </div>
+    </div>
+
+
+        {% endif %}
+
+{% endfor %}
+{% endif %}
+<!--end tweets loop-->
+<div id="errors">
+<td> 
+{% if errors %}
+{% for error in errors %}
+<font color=red>{{ error }}</font>
+{% endfor %}
+{% endif %}
+</div>
+
+{% if pageNumber == 1 %}
+<div class="pagination" id="paginationTwitter">
+<a href="" class="noClick" title="1"><b>1</b></a>
+{% if totalPages %}
+{% for integer in pages %}
+<a href="" class="Tpage" title="{{integer}}">{{integer}}</a>
+{% endfor %}
+{% endif %}
+{% if totalPages != 0 %}
+<a href="0" class="Tpage" title="Next">Next</a>
+{% endif %}
+</div>
+{% endif %}
+
+<br>
+</div>
+<div class="result-container" id="google" style="display:none">
+<h1>Google Search Results:</h1>
+<br>
+{% if googles %}
+{% for google in googles %}
+<div class="well googles">
+  <td><a href="{{google.link}}"><b>{{google.title}}</b></a></td>
+  <td><p>{{google.snippet}}</p></td>
+</div>
+{% endfor %}
+{% endif %}
+
+</div>
+<div class="result-container" id="analytics" style="display:none">
+<h1>Keyword Analytics:</h1>
+<br>
+<div class="well">
+  <h2>Tweet Statistics</h2>
+  <br>
+  <p><b>Average followers per user tweeting about "{{searchWord}}": </b> {{averageFollowers}}</p>
+  <p><b>Total users that tweets have reached: </b> {{totalFollowers}} </p>
+</div>
+<div class="well">
+  <h2>Statistics on Twitter users tweeting about "{{searchWord}}"</h2>
+  <table border="1" width="100%" class="statisticsTable">
+    <br>
+    <tr>
+      <th>Momentum Rating</th><th>Number of Users</th>
+    </tr>
+    <tr>
+      <td>Minimally Active</td><td>{{minimallyActive}}</td>
+    </tr>
+    <tr>
+      <td>Active</td><td>{{active}}</td>
+    </tr>
+    <tr>
+      <td>Very Active</td><td>{{veryActive}}</td>
+    </tr>
+    <tr>
+      <td>Extremely Active</td><td>{{extremelyActive}}</td>
+    </tr>
+  </table>
+  <br>
+  <table border="1" width="100%" class="statisticsTable">
+    <tr>
+      <th>Sociability Rating</th><th>Number of Users</th>
+    </tr>
+    <tr>
+      <td>Occassional Social Involvement</td><td>{{ocassionalSocial}}</td>
+    </tr>
+    <tr>
+      <td>Socially Integrated</td><td>{{sociallyIntegrated}}</td>
+    </tr>
+    <tr>
+      <td>Extremely Socially Integrated</td><td>{{extremelySocial}}</td>
+    </tr>
+  </table>
+  <br>
+  <table border="1" width="100%" class="statisticsTable">
+    <tr>
+      <th>Personality Profile</th><th>Number of Users</th>
+    </tr>
+    <tr>
+      <td>Casual User</td><td>{{casualUser}}</td>
+    </tr>
+    <tr>
+      <td>Striver</td><td>{{striver}}</td>
+    </tr>
+    <tr>
+      <td>Regular Tweeter</td><td>{{regularTweeter}}</td>
+    </tr>
+    <tr>
+      <td>Steady Force</td><td>{{steadyForce}}</td>
+    </tr>
+    <tr>
+      <td>Popular User</td><td>{{popularUser}}</td>
+    </tr>
+    <tr>
+      <td>Star</td><td>{{star}}</td>
+    </tr>
+  </table>
+
+
+</div>
+</div>
+<div id="loading" style="text-align: center; vertical-align: middle; font-family: Verdana; color: Blue; position: absolute; top: 50%; left: 50%; margin-left: -88px; font-size: small;
+opacity:0.7" id="dvProgress" runat="server">
+<img src="/static/ajax-loader.gif" style="vertical-align: middle" alt="Processing" /></div>
+
+
+{% endblock %}
+<!--/row--><!--/row--> </div>
+<!--/span--> </div>
+<!--/row-->
+<hr> <footer> </footer>
+<p>© Headliners 2012</p>
+</div>
+<div id="pagination" style="display:none">
+</div>
+
+<!--/.fluid-container--><!-- Le javascript
+    ================================================== --><!-- Placed at the end of the document so the pages load faster -->
+<script src="/static/js/jquery.js"></script>
+<script src="/static/js/jquery-1.8.2.js"></script>
+<script src="/static/js/bootstrap-transition.js"></script>
+<script src="/static/js/bootstrap-alert.js"></script>
+<script src="/static/js/bootstrap-modal.js"></script>
+<script src="/static/js/bootstrap-dropdown.js"></script>
+<script src="/static/js/bootstrap-scrollspy.js"></script>
+<script src="/static/js/bootstrap-tab.js"></script>
+<script src="/static/js/bootstrap-tooltip.js"></script>
+<script src="/static/js/bootstrap-popover.js"></script>
+<script src="/static/js/bootstrap-button.js"></script>
+<script src="/static/js/bootstrap-collapse.js"></script>
+<script src="/static/js/bootstrap.js"></script>
+<script src="/static/assets/js/bootstrap-carousel.js"></script>
+<script src="/static/assets/js/bootstrap-typeahead.js"></script>
+<script src="/static/js/jquery.validate.min.js"></script>
+
+<div class="modal"><!-- Place at bottom of page --></div>
+<script>
+    /*
+    Runs functions that makes link in tweet texts into clickable links
+    and converts the Twitter time into a readable format, i.e. ("5 mins ago, etc)
+    */
+    $('.tweetDate').ready(function(){
+	TwitterCreatedTime();
+	replaceURL();
+    });
+
+</script>
+<script>
+
+/*
+Function that gets a list of favorites in order to give them star
+indicators on the Tweet result page
+*/
+function getFavorites(){
+
+    $.ajax({
+	url: "/ajax/get_favorites/",
+	dataType: "json",
+
+    }).done(function(data){
+	var favoriteIDS = new Array();
+
+	for (var i = 0; i < data.favorites.length; i++){
+	    favoriteIDS.push(data.favorites[i].id_str);
+	}
+
+	//After tweets have been displayed, stars are put on if they are in the saved_tweets table
+	$('.favorite').each(function(){
+
+	    var $link = $(this).attr('href');
+	    var id_str = $link.substring($link.lastIndexOf('/') +1);
+
+	    for (var j = 0; j < favoriteIDS.length; j++){
+		if(favoriteIDS[j] == id_str){
+
+		    $(this).prev().attr('src', '/static/img/afterfavorite.png');
+		    $(this).prev().attr('class', 'afterfavorite');
+		} // end if
+	    }// end for
+	}); //end each
+
+    }); // end done
+}
+
+/*
+Function that handles the AJAX tweet pagination on the results page, and is
+customized to prevent multiple Ajax requests from firing, but only fires
+one at a time
+*/
+function twitterPaginationEventHandler(event)
+{
+
+    if(event.handled !== true)
+    {
+
+	//Import new data from current html
+	$selection = $(this).attr('title');
+
+	//AJAX function
+	$.ajax({
+	    url: "/ajax/get_tweet_page/" + $selection,
+	    dataType: "json",
+
+	}).done(function(data){
+
+	    removeTweets();
+      
+	    var list = data.tweet;
+	    var favorites = data.favorites
+	    var favoriteIDS = new Array();
+
+	    if(data.loginStatus == "undefined"){
+
+		for (var i = 0; i < list.length; i++){
+
+		    $('#errors').append('<div class="wellTwitter" id="tweets" style="width:90%">' +
+					'<img style="float:left; width: 60px; padding-right: 9px" src="' + list[i].profileimage_url + '">' +
+					'<p style="float:right" class="tweetDate">' + parseTwitterDate(list[i].created_at) + '</p>' +
+					'<td><a href="http:///twitter.com/' + list[i].from_user + '"><b>' + list[i].fromuser_name + 
+					'</b></a> @' + list[i].from_user + '</td>' +'<td><p class="tweetText">' + list[i].text + 
+					'</p></td> <div class="clickPanel"><a href="http://www.headliners.se/'+ list[i].fromuser_idstr +'" class="expand">Expand</a></td>' +
+					'<p id="id_str" style="display:none">'+list[i].id_str +'</p>'+
+					'<p id="favCount" style="float:right">Headliner Favorites Count: '+ list[i].likes+' </p></div>' +
+					'</div>');
+		}// end for
+
+	    }else {
+		
+		for ( var i = 0; i < list.length; i++){
+
+			$('#errors').append('<div class="wellTwitter" id="tweets" style="width:90%">' +
+					    '<img style="float:left; width: 60px; padding-right: 9px" src="' + list[i].profileimage_url + '">' +
+					    '<p style="float:right" class="tweetDate">' + parseTwitterDate(list[i].created_at) + '</p>' +
+					    '<td><a href="http:///twitter.com/' + list[i].from_user + '"><b>' + list[i].fromuser_name + 
+					    '</b></a> @' + list[i].from_user + '</td>' +'<td><p class="tweetText">' + list[i].text + 
+					    '</p></td> <div class="clickPanel"><a href="http://www.headliners.se/'+ list[i].fromuser_idstr +'" class="expand">Expand</a></td>' +
+					    '<td class="favoritesSection"><img class="beforefavorite" src="/static/img/beforefavorite.png">' +
+					    '<a href="http://www.headliners.se/' + list[i].id_str + '" class="favorite"> Favorite </a>'+
+					    '<p id="id_str" style="display:none">'+list[i].id_str +'</p><p id="favCount" style="float:right">Headliner Favorites Count: ' +
+					    list[i].likes + '</p> </div>' + '</div>');
+
+
+		}// end for
+
+		for (var i = 0; i < favorites.length; i++){
+		    favoriteIDS.push(favorites[i].id_str);
+		}
+	    }// end else
+
+	    //After tweets have been displayed, stars are put on if they are in the saved_tweets table
+	    $('.favorite').each(function(){
+
+		var $link = $(this).attr('href');
+		var id_str = $link.substring($link.lastIndexOf('/') +1);
+//		alert(id_str);
+
+		for (var j = 0; j < favoriteIDS.length; j++){
+		    if(favoriteIDS[j] == id_str){
+
+			$(this).siblings('.beforefavorite').attr('src', '/static/img/afterfavorite.png');
+			$(this).siblings('.beforefavorite').attr('class', 'afterfavorite');
+		    } // end if
+		}// end for
+
+	    }); //end each
+
+
+	    replaceURL();
+	    hoverTweet();
+
+	    var pages = new Array();
+	    var currentPage = data.currentPage;
+	    var totalPages = parseInt(data.totalPages);
+	    var selection = parseInt(data.selection);
+
+	    //If and else statements that are responsible for creating an array of numbers that will
+	    //populate the pagination bar, when Ajax is executed
+	    if(totalPages > 10){
+        
+		if(currentPage % 5 == 0){
+        
+		    var lastPage;
+
+		    if(currentPage + 10 < totalPages){
+			lastPage = currentPage + 5;
+		    }else
+			lastPage = totalPages;
+
+		    for(var i = currentPage-5; i <= lastPage; i++)
+			pages.push(i);
+		}else if(currentPage <=10){
+    
+		    for (var i = 0; i <= 10; i++){
+			pages.push(i);
+		    } 
+		}else if(currentPage > 10){
+
+		    var lastPage;
+		    if(currentPage + 10 < totalPages){
+			lastPage = currentPage + 5;
+		    }else
+			lastPage = totalPages;
+
+		    for(var i = currentPage -5; i <= lastPage; i++)
+			pages.push(i);
+
+		}
+	    } else if (totalPages< 10){
+
+		for (var i = 0; i <= totalPages; i++)
+		    pages.push(i);
+	    }
+
+	    $('#errors').after('<div class="pagination" id="paginationTwitter">'); 
+	    if(currentPage > 1){
+
+		$('#paginationTwitter').append('<a href="" class="Tpage" title="Previous">Previous</a>');
+	    }
+      
+	    //Switch statements that detects which areas of the pagination bar are clicked, i.e. "Next", "Previous",
+	    //and a numbered request ("1", "2", etc, which is represented by default)
+	    switch($selection){
+	    case "Next":
+
+		for (var i = 1; i < pages.length; i++){
+		    if(currentPage == pages[i]){
+			$('#paginationTwitter').append('<a href="" class="noClick"><b>' + pages[i] + '</b></a>');
+		    }else {
+			$('#paginationTwitter').append('<a href="" class="Tpage" title="' + pages[i] + '">' +
+						       pages[i] + '</a>');
+		    }
+		}
+		break;
+
+	    case "Previous":
+		for (var i = 1; i < pages.length; i++){
+		    if(currentPage == pages[i]){
+			$('#paginationTwitter').append('<a href="" class="noClick"><b>' + pages[i] + '</b></a>');
+		    }else {
+			$('#paginationTwitter').append('<a href="" class="Tpage" title="' + pages[i] + '">' +
+						       pages[i] + '</a>');
+		    }
+		}
+		break;
+
+	    default:
+		for (var i = 1; i < pages.length; i++){
+		    if(parseInt(data.selection) == pages[i]){
+			$('#paginationTwitter').append('<a href="" class="noClick"><b>' + pages[i] + '</b></a>');
+		    }else {
+			$('#paginationTwitter').append('<a href="" class="Tpage" title="' + pages[i] + '">' +
+						       pages[i] + '</a>');
+		    }
+		}
+		break;
+
+	    }
+
+	    if(totalPages !=  currentPage){
+		$('#paginationTwitter').append('<a href="" class="Tpage" title="Next">Next</a></div>');
+	    }
+	}); // end done
+	$('html, body').animate({ scrollTop: 0 }, 0);
+
+
+	event.handled = true;
+    } //end if
+    return false;
+}
+
+/*
+Function that handles the AJAX favorting of tweets on the results page, and is
+customized to prevent multiple Ajax requests from firing, but only fires
+one at a time
+*/
+function twitterFavoriteEventHandler(event)
+{
+
+    if(event.handled !== true)
+    {
+
+	if($(this).prev().attr('class') == "afterfavorite"){
+
+	    $(this).blur();
+	    var $link = $(this).attr('href');
+	    var id_str = $link.substring($link.lastIndexOf('/') +1);
+	    var $location = $(this);
+	    
+	    $.ajax({
+	    url: "/ajax/tweet_unfavorite/" + id_str,
+	    dataType: "json",
+
+	    }).done(function(data){
+
+		switch(data.result){
+
+		case "deleted":
+
+		    var $countString = $location.siblings('#favCount').text();
+		    var regexPattern = /[\d.*]/;
+		    var $count = parseInt($countString.match(regexPattern));
+		    var newCount =  $count -1;
+		    $location.siblings('#favCount').text('Headliner Favorites Count: ' + newCount);
+
+		    $location.prev().attr('src', '/static/img/beforefavorite.png');
+		    $location.prev().attr('class', 'beforefavorite');
+		    break;
+
+		case "already_deleted":
+		    $location.prev().attr('src', '/static/img/beforefavorite.png');
+		    $location.prev().attr('class', 'beforefavorite');
+		    break;
+
+		case "not_logged_in":
+		    alert('Not logged in');
+		    break;
+
+		} //end switch
+
+	    }); //end done
+	}// end if
+
+	if($(this).prev().attr('class') == "beforefavorite"){
+	    $(this).blur();
+	    var $this = $(this);
+	    var $link = $(this).attr('href');
+	    var id_str = $link.substring($link.lastIndexOf('/') +1);
+	    var $location = $(this);
+
+	    $.ajax({
+		url: "/ajax/tweet_favorite/" + id_str,
+		dataType: "json",
+
+	    }).done(function(data){
+	    
+		switch(data.result){
+
+		case "success":
+		    var $countString = $this.siblings('#favCount').text();
+		    var regexPattern = /[\d.*]/;
+		    var $count = parseInt($countString.match(regexPattern));
+		    var newCount = 1 + $count;
+		    $this.siblings('#favCount').text('Headliner Favorites Count: ' + newCount);
+		    $location.prev().attr('src', '/static/img/afterfavorite.png');
+		    $location.prev().attr('class', 'afterfavorite');
+		    
+		    break;
+		    
+		case "already_saved":
+		    alert('already_saved');
+		    break;
+
+		case "not_logged_in":
+		    alert('Not logged in');
+		    break;
+		
+		}// end switch
+		
+	    }); //end done
+	
+	}//end if
+	event.handled = true;
+    } //end if
+    return false;
+}
+
+//Handles the AJAX request for more information for a user. Checks to see if the
+//event handler has been issued before. If it has, it fires. Otherwise it doesn't.
+//The function prevents multiple AJAX requests from being sent
+function twitterUserEventHandler(event)
+{
+    if(event.handled !== true)
+    {
+      
+      	//If a twitter user profile is already expanded, collapse it and restore default values
+	$('.collapse').text('Expand').attr('class', 'expand');
+	$('.twitterUser').slideUp('normal',function(){ $(this).remove();});
+	$('.activeTweet').attr('class', 'wellTwitter').css({'background-color': '#f5f5f5', 'color':'black'});
+	
+	//Make current selection highlighted
+	$(this).parent('.clickPanel').parent('.activeTweet').css({'background-color':'#E5E5D8', 'color':'#00527C'});
+	$(this).blur();
+
+	//When clicked, "Expand" changes to "Collapse" and an AJAX request is made
+	$(this).text('Collapse');
+	var $link = $(this).attr('href');
+	var id = $link.substring($link.lastIndexOf('/') +1);
+	$(this).parent().parent('#tweets').attr('class', 'activeTweet');
+	$(this).attr('class', 'collapse');
+	var $twitter_id = $(this).siblings('#id_str').text();
+
+	var $this = $(this);
+
+	$.ajax({
+	    url: "/ajax/retrieve_twitter_user/" + id +"/",
+	    dataType: "json",
+
+	}).done(function(data){
+
+	    var info = data.twitter_user;
+
+
+	    //If user doesn't provide a location, set it to "Unknown"
+	    if(info[0].location == "null"){
+		var location = "Unknown";
+	    }else
+		var location = info[0].location
+
+	    //If user doesn't have a description, set it to "None"
+	    if(info[0].description.length == 0){
+		var description = "None";
+	    }else
+		var description = info[0].location
+
+	    //If user doesn't have a URL, set it to "None"
+	    if(info[0].url == "null"){
+		var url = "None";
+	    }else
+		var url = "<a href='" + info[0].url + "'>" + info[0].url + "</a>";
+	    
+	    //Retrieve info on when the twitter account was created
+	    var month = accountCreatedOn(info[0].created_at);
+
+	    //Information about the user that is displayed on the results page
+	    var moreInfo = "<div id='userInfo' class='twitterUser'><hr><td><b>Location: </b>" + location + "</td>" +
+		"<br><td><b>Bio: </b>" + info[0].description +"</td><br><td><b>URL: </b>" + url + "</td><br>" +
+		"<td><b>Member since: </b>" + month + "</td><br><td><b>Followers: </b>" + info[0].followers_count +  "</td>" +
+		"<br><td><b>Following: </b>" + info[0].following + "</td><br><td><b>Appearances in Public Lists: </b>" + 
+		info[0].listed_count + "</td><br><td><b>Momentum Rating:</b> "+ data.activityLevel + "</td>" +
+		"<br><td><b>Sociability Rating: </b>" + data.inclusionLevel + "</td><br><td><b>Twitter Personality: </b>" +
+		data.personalityLevel + "</td></div>"
+	    $this.parents('.clickPanel').append(moreInfo).hide().slideDown();
+	    
+	}); //end done
+
+
+	event.handled = true;
+    }
+    return false;
+}
+
+//When a Tweet result is moused over, it becomes selected and Business Intelligence
+//functionality is made available
+function hoverTweet(){
+
+    //If collapsed is clicked, Twitter user info is removed from Twitter result
+    $(document).on('click','.collapse', function(evt){
+
+	$('.collapse').text('Expand').attr('class', 'expand').blur();
+	$('#userInfo').slideUp('normal',function(){ $(this).remove();});
+	$(this).parent().parent('#tweets').attr('class','wellTwitter');
+	return false;
+    }); // end collapse
+    
+	
+    //When a user mouses over a Twitter result, its appearance changes, and reverts back
+    //to the original appereance when they move off the result
+    $('.wellTwitter').mouseover(function(){
+	$(this).css({'background-color':'#E5E5D8', 'color':'#00527C'});
+	$(this).find('.expand').css({'color':'#2895CF', 'font-weight':'500'});
+	$(this).find('.favorite').css({'color':'#2895CF', 'font-weight':'500'});
+
+    }).mouseout(function(){
+	var classStatus = $(this).attr('class');
+
+	if(classStatus != 'activeTweet'){
+	    $(this).css({'background-color': '#f5f5f5', 'color':'black'});
+	    $(this).find('.expand').css({'color':'#393936', 'font-weight':'200'});
+	    $(this).find('.favorite').css({'color':'#393936', 'font-weight':'200'});
+	}
+    }); //end mouseout
+
+}
+
+//Function that retrieves data on when a Twitter user's account was created. The data
+//returned is in "month year" format
+function accountCreatedOn(Date){
+    var monthRegex = /[...\s].../;
+    var monthYear = /[\d{4}\s]\d{4}/;
+    var month = Date.match(monthRegex);
+    var year = Date.match(monthYear);
+    
+    return month + " " + year;
+    
+}
+
+//Function that turns URL links on the result page into clickable links
+function replaceURL(){
+    
+  $('.tweetText').each(function(){
+
+      //Removing links
+      var replaceURL = /https?\:\/\/\S*/;
+      var replaceHash = /#\S*/;
+      var removeHash = /[^#]\S*/;
+      var $text = $(this).text();
+      var match = $text.match(replaceURL);
+      var newURLText = $text.replace(replaceURL, '<a href="' + match + '" class="htmlLink">'  +  match + '</a>');
+
+      $(this).html(newURLText);
+      
+  });
+}
+
+//Function that checks if the user has not put an empty space as a search term in search box,
+//located to the left of the search box
+function validateSearch(){
+    $('#formSubmit').validate({
+	rules: {
+	    searchInput: {
+		required: true
+	    } 
+	},// end rules
+	messages: {
+	    searchInput: {
+		required: "You entered an empty search query!"
+	    }
+	},
+	errorPlacement: function(error, placement) {
+	    $('#submitButton').after(error);
+	}
+    }); // end validate
+} //end validateSearch
+
+//Function for removing tweets from the results page: used in
+//getTweetsAndPagination
+function removeTweets(){
+
+    $('div').remove('.activeTweet');
+    $('div').remove('.wellTwitter');
+    $('div').remove('.pagination');
+   
+}
+ 
+//Function that parses a Tweet's creation date, and returns it in a readable format,
+//i.e. "5 seconds ago", "2 days ago", etc
+function parseTwitterDate(tdate) {
+    var system_date = new Date(Date.parse(tdate));
+    var user_date = new Date();
+    if (K.ie) {
+        system_date = Date.parse(tdate.replace(/( \+)/, ' UTC$1'))
+    }
+    var diff = Math.floor((user_date - system_date) / 1000);
+    if (diff <= 1) {return "just now";}
+    if (diff < 20) {return diff + " seconds ago";}
+    if (diff < 40) {return "half a minute ago";}
+    if (diff < 60) {return "less than a minute ago";}
+    if (diff <= 90) {return "one minute ago";}
+    if (diff <= 3540) {return Math.round(diff / 60) + " minutes ago";}
+    if (diff <= 5400) {return "1 hour ago";}
+    if (diff <= 86400) {return Math.round(diff / 3600) + " hours ago";}
+    if (diff <= 129600) {return "1 day ago";}
+    if (diff < 604800) {return Math.round(diff / 86400) + " days ago";}
+    if (diff <= 777600) {return "1 week ago";}
+    return "on " + system_date;
+}
+
+// from http://widgets.twimg.com/j/1/widget.js
+var K = function () {
+    var a = navigator.userAgent;
+    return {
+        ie: a.match(/MSIE\s([^;]*)/)
+    }
+}();
+ 
+/*
+Function that replaces the Twitter created time, example:  Fri, 14 Dec 2012 11:30:30 +0000,
+to something human readable, example: "6 minutes ago", etc
+*/
+function TwitterCreatedTime(){
+
+    $('.tweetDate').each(function(){
+  var createdOn = $(this).text();
+  var newDate = parseTwitterDate(createdOn);
+  $(this).html(newDate).show();
+  
+    });//end of each
+}
+
+/*
+Function that queries the database for a user account when a user tries to login.
+If the login is successful, the upper menu panel reveals a favorites menu and the login
+section disappers. Otherwise, an alert window appears and says that logging in was incorrectly
+done.
+*/
+function login(){
+    $(document).on('click', '#login', function(){
+	var $email = $('#email').val();
+	var $password = $('#password').val();
+	var $this = $(this);
+
+	$.ajax({
+	    url: "/ajax/login/" + $email + "/" + $password,
+	    dataType: "json",
+
+	}).done(function(data){
+
+	    if(data.result == "success"){
+
+		$('#loginPanel').remove();
+		var accountPanel = "<div id='accountPanel'> <ul class='nav'>	<li> <a href='/favorites'>" +
+		    "Favorites </a> </li> <li > <a href='/logout' id='logout'> Logout </a> </li> </ul> </div>"
+		$('#menuBar').append(accountPanel);
+
+		$('.clickPanel').each(function(){
+		    var $id_str = $(this).children('#id_str').text();
+
+		    var favoritesButton = '<img class="beforefavorite" src="/static/img/beforefavorite.png">' +
+			'<a href="http://www.headliners.se/'+ $id_str  +'" class="favorite"> Favorite</a>';
+
+		    $(this).append(favoritesButton);
+
+		});// end each
+
+		var favoriteIDS = new Array();
+
+		for (var i = 0; i < data.favorites.length; i++){
+		    favoriteIDS.push(data.favorites[i].id_str);
+		}
+
+		//After tweets have been displayed, stars are put on if they are in the saved_tweets table
+		$('.favorite').each(function(){
+		    
+		    var $id_str = $(this).siblings('#id_str').text();
+		    //$(this).attr('href', '"http://headliners.se/'+$id_str+'"');
+		    var $link = $(this).attr('href');
+		    var id_str = $link.substring($link.lastIndexOf('/') +1);
+
+		    for (var j = 0; j < favoriteIDS.length; j++){
+			if(favoriteIDS[j] == $id_str){
+
+			    $(this).prev().attr('src', '/static/img/afterfavorite.png');
+			    $(this).prev().attr('class', 'afterfavorite');
+
+			}// end if
+		    }//end for
+
+		});// end each
+
+
+	    }
+	    else
+		alert('Incorrect email or password.\nTry again or go to the register page to open a new account.');
+
+	});// end done
+
+	return false;
+    });// end click
+}
+
+/*
+Logout function that logs the user out of the system and adds the login panel to the top menu bar
+*/
+function logout(){
+
+    $(document).on('click', '#logout', function(){
+
+	$.ajax({
+	    url: "/ajax/logout/",
+	    dataType: "json",
+	    
+	}).done(function(data){
+
+	    $('#accountPanel').remove();
+	    
+	    if(data.result == "success"){
+		var loginPanel = "<div id='loginPanel'><form class='navbar-form pull-right'>" +
+		"<input name='email'id='email' type='email' placeholder='Email' class='span2'>" +
+		"<input name='password' id='password' type='password' placeholder='Password' class='span2'>" +
+		"<button id ='login' class='btn'> Sign in </button>"  +
+		"</form></div>";
+		$('#menuBar').append(loginPanel);
+		$('.favorite').each(function(){
+		    $(this).remove();
+		});
+		$('.beforefavorite').each(function(){
+		    $(this).remove();
+		});
+		$('.afterfavorite').each(function(){
+		    $(this).remove();
+		});
+				    
+				    
+	    }
+	});
+	return false;
+    }); //end click
+}
+</script>
+<script>
+
+//Loads functions that are run after the page has loaded all its content
+$(document).ready(function(){
+
+    //Adding 'star' indication to favorite tweets
+    getFavorites();
+    login(); //prepares the login function for use
+    logout(); //prepares the logout function for use
+
+    //When user clicks on a page, Ajax shows the next page dynamically
+    $(document).on('click','.Tpage', twitterPaginationEventHandler);
+
+
+    //When user clicks on "Expand", more information is displayed
+    $(document).on('click','.expand', twitterUserEventHandler);
+
+    //When user clicks on "Favorite", it is saved to the database
+    $(document).on('click','.favorite', twitterFavoriteEventHandler);
+    
+    //Controls page behavior when a user mouses over a Twitter result
+    hoverTweet();
+  
+    //Controls what happens when a user clicks the "Submit" button
+    $('#formSubmit').click(function(){
+	validateSearch().slideDown('slow');
+    });
+
+    //Loads a loading bar when AJAX requests are initiated, and disappears
+    //after they have completed
+    $('#loading').hide();
+    $("div[id$=dvProgress]").fadeOut("fast");
+    $("#loading").on({
+    ajaxStart: function() { 
+        $(this).show();
+    },
+    ajaxStop: function() { 
+        $(this).hide();
+    }    
+    });
+
+    //Responsible for handling the pagination of the Twitter results page
+//    getTweetsAndPagination();
+
+    //Function that brings up the Twitter results when the Twitter tab is clicked
+    $('#twitterClick').click(function() { 
+	$('#toc li.current').removeClass('current');
+	$('#twitterli').addClass('current');
+	$('.result-container').hide();
+	$('#twitter').show();
+	$(this).blur();
+	return false;
+    }); //end click
+
+    //Function that brings up the Google results when the Google tab is clicked
+    $('#googleClick').click(function() {
+	$('#toc li.current').removeClass('current');
+	$('#googleli').addClass('current');
+	$('.result-container').hide();
+	$('#google').show();
+	$(this).blur();
+	return false;
+    }); //end click
+
+    //Function that brings up the Analytics Results  when the Analytics tab is clicked
+    $('#analyticsClick').click(function() {
+	$('#toc li.current').removeClass('current');
+	$('#analyticsli').addClass('current');
+	$('.result-container').hide();
+	$('#analytics').show();
+	$(this).blur();
+	return false;
+    }); //end click
+    
+});//end ready
+</script>
+</body></html>

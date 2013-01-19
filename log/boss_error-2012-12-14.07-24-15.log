@@ -1,0 +1,84 @@
+
+=INFO REPORT==== 14-Dec-2012::07:24:15 ===
+Starting Boss in development mode....
+
+=INFO REPORT==== 14-Dec-2012::07:24:15 ===
+Starting master services on headliners_app@arch
+
+=INFO REPORT==== 14-Dec-2012::07:24:15 ===
+SSL:[]
+
+=INFO REPORT==== 14-Dec-2012::07:24:15 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::07:24:17 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::07:24:18 ===
+GET / [headliners_app] 200 738ms
+
+=INFO REPORT==== 14-Dec-2012::07:24:20 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::07:24:22 ===
+POST /search/result [headliners_app] 302 2213ms
+
+=INFO REPORT==== 14-Dec-2012::07:24:22 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::07:24:24 ===
+GET /search/result/search-334 [headliners_app] 200 1429ms
+
+=INFO REPORT==== 14-Dec-2012::07:24:24 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::07:24:25 ===
+GET /ajax/get_favorites/ [headliners_app] 200 658ms
+
+=INFO REPORT==== 14-Dec-2012::07:24:27 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::07:24:28 ===
+GET /ajax/get_tweet_page/Next [headliners_app] 200 807ms
+
+=INFO REPORT==== 14-Dec-2012::07:24:30 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::07:24:31 ===
+GET /ajax/get_tweet_page/6 [headliners_app] 200 747ms
+
+=INFO REPORT==== 14-Dec-2012::07:24:34 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::07:24:35 ===
+GET /ajax/login/user/password [headliners_app] 200 855ms
+
+=INFO REPORT==== 14-Dec-2012::07:24:36 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::07:24:37 ===
+GET /ajax/tweet_favorite/278046536569597952 [headliners_app] 200 728ms
+
+=INFO REPORT==== 14-Dec-2012::07:24:38 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::07:24:38 ===
+GET /ajax/tweet_unfavorite/278046536569597952 [headliners_app] 200 640ms
+
+=INFO REPORT==== 14-Dec-2012::07:24:40 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::07:24:42 ===
+GET /favorites [headliners_app] 200 1314ms
+
+=INFO REPORT==== 14-Dec-2012::07:24:44 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::07:24:45 ===
+GET /ajax/get_favorite_page/Next [headliners_app] 200 753ms
+
+=INFO REPORT==== 14-Dec-2012::07:24:46 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::07:24:47 ===
+GET /ajax/get_favorite_page/1 [headliners_app] 200 602ms

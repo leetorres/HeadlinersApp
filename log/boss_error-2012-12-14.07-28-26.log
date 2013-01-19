@@ -1,0 +1,107 @@
+
+=INFO REPORT==== 14-Dec-2012::07:28:26 ===
+Starting Boss in development mode....
+
+=INFO REPORT==== 14-Dec-2012::07:28:26 ===
+Starting master services on headliners_app@arch
+
+=INFO REPORT==== 14-Dec-2012::07:28:26 ===
+SSL:[]
+
+=INFO REPORT==== 14-Dec-2012::07:28:26 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::07:28:34 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::07:28:34 ===
+GET /favorites [headliners_app] 200 672ms
+
+=INFO REPORT==== 14-Dec-2012::07:28:37 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::07:28:38 ===
+GET / [headliners_app] 200 675ms
+
+=INFO REPORT==== 14-Dec-2012::07:28:42 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::07:28:44 ===
+POST /search/result [headliners_app] 302 1875ms
+
+=INFO REPORT==== 14-Dec-2012::07:28:44 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::07:28:45 ===
+GET /search/result/search-335 [headliners_app] 200 983ms
+
+=INFO REPORT==== 14-Dec-2012::07:28:46 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::07:28:46 ===
+GET /ajax/get_favorites/ [headliners_app] 200 627ms
+
+=INFO REPORT==== 14-Dec-2012::07:28:48 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::07:28:49 ===
+GET /ajax/get_tweet_page/9 [headliners_app] 200 689ms
+
+=INFO REPORT==== 14-Dec-2012::07:28:52 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::07:28:52 ===
+GET /ajax/get_tweet_page/Previous [headliners_app] 200 642ms
+
+=INFO REPORT==== 14-Dec-2012::07:28:57 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::07:28:57 ===
+GET /ajax/login/user/password [headliners_app] 200 796ms
+
+=INFO REPORT==== 14-Dec-2012::07:28:58 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::07:28:59 ===
+GET /ajax/tweet_favorite/277011199038746624 [headliners_app] 200 753ms
+
+=INFO REPORT==== 14-Dec-2012::07:29:02 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::07:29:03 ===
+GET /ajax/get_tweet_page/Next [headliners_app] 200 599ms
+
+=INFO REPORT==== 14-Dec-2012::07:29:06 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::07:29:07 ===
+GET /favorites [headliners_app] 200 1195ms
+
+=INFO REPORT==== 14-Dec-2012::07:29:11 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=ERROR REPORT==== 14-Dec-2012::07:29:11 ===
+{function_clause,
+    [{lists,nthtail,[6,[]],[{file,"lists.erl"},{line,127}]},
+     {lists,sublist,3,[{file,"lists.erl"},{line,279}]},
+     {pagination,favorites_paginated,1,
+         [{file,
+              "/home/lee/headlinersFinal/headliners/headliners_app/src/lib/pagination.erl"},
+          {line,231}]},
+     {boss_web_controller,execute_action,5,
+         [{file,"src/boss/boss_web_controller.erl"},{line,704}]},
+     {boss_web_controller,process_request,5,
+         [{file,"src/boss/boss_web_controller.erl"},{line,459}]},
+     {timer,tc,3,[{file,"timer.erl"},{line,194}]},
+     {boss_web_controller,handle_request,3,
+         [{file,"src/boss/boss_web_controller.erl"},{line,388}]},
+     {mochiweb_http,headers,5,[{file,"src/mochiweb_http.erl"},{line,90}]}]}
+
+=ERROR REPORT==== 14-Dec-2012::07:29:11 ===
+GET /ajax/get_favorite_page/3 [headliners_app] 500 637ms
+
+=INFO REPORT==== 14-Dec-2012::07:29:14 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::07:29:15 ===
+GET /ajax/get_favorite_page/2 [headliners_app] 200 664ms

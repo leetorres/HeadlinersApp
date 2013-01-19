@@ -1,0 +1,38 @@
+% Routes file.
+
+% Formats: 
+%   {"/some/route", [{controller, "Controller"}, {action, "Action"}]}.
+%   {"/some/route", [{controller, "Controller"}, {action, "Action"}, {id, "42"}]}.
+%   {"/(some|any)/route/(\\d+)", [{controller, '$1'}, {action, "Action"}, {id, '$2'}]}.
+%   {"/some/route/(?<route_id>\\d+)", [{controller, "Controller"}, {action, "Action"}, {id, '$route_id'}]}.
+%   {"/some/route", [{application, some_app}, {controller, "Controller"}, {action, "Action"}, {id, "42"}]}.
+%
+%   {404, [{controller, "Controller"}, {action, "Action"}]}.
+%   {404, [{controller, "Controller"}, {action, "Action"}, {id, "42"}]}.
+%   {404, [{application, some_app}, {controller, "Controller"}, {action, "Action"}, {id, "42"}]}.
+%
+% Note that routing across applications results in a 302 redirect.
+
+% Front page
+ {"/", [{controller, "search"}, {action, "redirect"}]}.
+
+% About Page
+ {"/about", [{controller, "about"}, {action, "redirect"}]}.
+
+% Contact Page
+ {"/contact", [{controller, "contact"}, {action, "redirect"}]}.
+ 
+% Getting Started Page
+{"/getting_started", [{controller, "getting_started"}, {action, "redirect"}]}.
+
+% How it works 
+ {"/how_it_works", [{controller, "how_it_works"}, {action, "redirect"}]}.
+
+% Favorites 
+ {"/favorites", [{controller, "favorites"}, {action, "redirect"}]}.
+
+% 404 File Not Found handler
+% {404, [{controller, "world"}, {action, "lost"}]}.
+
+% 500 Internal Error handler (only invoked in production)
+% {500, [{controller, "world"}, {action, "calamity"}]}.

@@ -1,0 +1,2 @@
+-module(account, [Id,Email,Password, Company]).
+-compile(export_all).

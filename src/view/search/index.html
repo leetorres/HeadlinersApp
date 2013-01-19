@@ -1,0 +1,363 @@
+<!--
+%%%-------------------------------------------------------------------
+%%% @author Lee, Robin, Chayi, Chris, David, Ashley
+%%% @copyright (C) 2012, Headliners
+%%% @doc
+%%% This displays the search page.
+%%% @end
+%%%-------------------------------------------------------------------
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    <meta charset="utf-8">
+    <title>
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Le styles -->
+    <link href="/static/css/bootstrap.css" rel="stylesheet">
+    <style>
+      body { padding-top: 60px; /* 60px to make the container go all the way
+      to the bottom of the topbar */ }
+    </style>
+    <link href="/static/css/bootstrap-responsive.css" rel="stylesheet">
+    <style>
+      undefined
+    </style>
+    
+  </head>
+  
+  <body>
+    <div class="navbar navbar-fixed-top navbar-inverse">
+      <div class="navbar-inner">
+        <div id="menuBar" class="container">
+          <a class="brand" href="/">
+            Headliners
+          </a>
+          <ul class="nav">
+            <li>
+              <a href="/">
+                Home
+              </a>
+            </li>
+            <li>
+              <a href="/getting_started">
+                Register
+              </a>
+            </li>
+            <li>
+              <a href="/about">
+                About
+              </a>
+            </li>
+            <li>
+              <a href="/contact">
+                Contact
+              </a>
+            </li>
+          </ul>
+	  {% if uniqueID == "undefined" %}
+	  <div id="loginPanel">
+          <form class="navbar-form pull-right">
+            <input name="email" id="email" type="email" placeholder="Email" class="span2">
+            <input name="password"id="password" type="password" placeholder="Password" class="span2">
+            <button id ="login" class="btn">
+              Sign in
+            </button>
+          </form>
+	  </div>
+	  {% else %}
+	  <div id="accountPanel">
+	    <ul class="nav">
+	      <li>
+		<a href="/favorites">
+                  Favorites
+		</a>
+              </li>
+	      <li >
+		<a href="/logout" id="logout">
+                  Logout
+		</a>
+              </li>
+	  </ul>
+	  </div>
+	  {% endif %}
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="hero-unit">
+        <div>
+          <h1>
+            Headliners
+          </h1>
+          <p>
+            <i>
+              business intelligence for companies, brands, and people
+            </i>
+          </p>
+        </div>
+        <form method="post" id="formSubmit" action="{% url action="result" %}">
+          <div class="control-group">
+            <label for="searchInput">
+              <br>
+            </label>
+            <input name="searchInput" id="searchInput" class="required" type="text" placeholder="Enter your search term here">
+          </div>
+          <div style="display:none">
+	    <input name="latitude" id="latitude" type="text" >
+	    <input name="longitude" id="longitude" type="text">
+	  </div>
+
+          <input class="btn btn-primary" id="searchButton" type="submit" value="Submit »">           
+        </form>
+      </div>
+      <div class="row">
+        <div class="span4">
+          <div class="well">
+            <h2>
+              How it Works
+            </h2>
+            <p>
+            </p>
+            <ol style="font-size: 14px; font-weight: normal; line-height: 20px; ">
+              <li>
+                Enter your search term and click the Submit button.
+                <br>
+              </li>
+              <li>
+                View the Twitter and Google results and business intelligence. You can also create an account and save favorites if you wish.
+              </li>
+              <li>
+                Take action based on the business intelligence you receive. For example, you can find new customers, service existing ones or find and engage in discussions.
+              </li>
+            </ol>
+            <p>
+            </p>
+	    <a class="btnclick" href="/how_it_works">
+            View details »
+          </a>
+          </div>
+        </div>
+	{% block body %}
+        <div class="span4">
+          <div class="well">
+	    <div>
+            <h2 style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51); ">
+              Traffic Feed 
+            </h2><h4>(Latest 5 visitors)</h4>
+	    </div>
+	    <br>
+            <ol style="font-size: 14px; font-weight: normal; line-height: 20px; ">
+	    {% for search in searches %}
+	    {% if search.city == "null" %}
+	    <li> A visitor from an <span class="location">anonymous location </span> searched for <span class="latest">{{search.search_text}}</span> </li><br>
+	    {% else %}
+	    <li>A visitor from <span class="location">{{search.city}}, {{search.country}}</span> searched for <span class="latest">{{search.search_text}}</span> </li><br>
+	    {% endif %}
+	    {% endfor %}
+            </ol>
+          </div>
+        </div>
+	{% endblock %}
+        <div class="span4">
+          <div class="well">
+            <h2>
+            </h2>
+            <h2 style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51); ">
+              Site Statistics
+            </h2>
+            <p style="font-size: 14px; font-weight: normal; line-height: 20px; ">
+            </p>
+            <span style="font-size: 14px; font-weight: normal; line-height: 20px; ">
+             
+	      <div>
+		<h4>Search Statistics</h4>
+		<td>Total Searches: {{ totalSearches }}</td><br>
+		<td>Total Tweets: {{ totalTweets }} </td><br>
+		<td>Average tweets per Search: {{tweetPerSearch}} </td>
+	      </div>
+	      <br>
+	      <div>
+		<h4>User Statistics</h4>
+		{% if totalCities == 1 %}
+		<td>Users come from 1 regions/city </td><br>
+		{% else %}
+		<td>Users come from {{totalCities}} regions/cities </td><br>
+		{% endif %}
+		{% if totalCountries == 1 %}
+		<td>Users come from 1 country </td><br>
+		{% else %}
+		<td>Users come from {{totalCountries }} countries </td>
+		{% endif %}
+              </div>
+            </span>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div id="loading" style="text-align: center; vertical-align: middle; font-family: Verdana; color: Blue; position: absolute; top: 50%; left: 50%; margin-left: -88px; font-size: small;opacity:0.6; border-radius: 5px 10px / 10px; display:none" id="dvProgress" runat="server">
+<img src="/static/ajax-loader.gif" style="vertical-align: middle" alt="Processing" /></div>
+      
+      <div>
+        © Headliners 2012 | <a href="http://stats.pingdom.com/9p92strnr8gm/686494">Uptime Report</a>
+      </div>
+    </div>
+<!--/.fluid-container--><!-- Le javascript
+    ================================================== --><!-- Placed at the end of the document so the pages load faster -->
+    
+    <script src="/static/js/bootstrap.js">
+    </script>
+    <link href="/static/js/fancybox/jquery.fancybox-1.3.4.css" rel="stylesheet">
+    <script src="/static/js/jquery-1.8.2.js"></script>
+    <script src="/static/js/fancybox/jquery.fancybox-1.3.4.js"></script>
+    <script src="/static/js/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script>   
+
+/*
+Extracts the latitude and longitude, if the user provides it
+*/     
+function foundLocation(position) {
+    var lat = position.coords.latitude;
+    var lon = position.coords.longitude;
+    $('#latitude').val(lat);
+    $('#longitude').val(lon);
+	
+}
+
+/*
+If no coordinates are found by the javascript geolocation library, run this function
+returns values for latitude and longitude
+*/
+function noLocation() {  
+    $('#lat').html('nope');
+    $('#long').html('nope');
+
+}
+
+/*
+Function that validates the search box so that there are no empty searches
+*/
+function validateSearch(){
+    var result = $('#formSubmit').validate({
+	rules: {
+	    searchInput: {
+		required: true
+	    } 
+	},// end rules
+	messages: {
+	    searchInput: {
+		required: "You entered an empty search query!"
+	    }
+	}
+
+    }); // end validate
+    return result.form();
+} //end validateSearch
+
+/*
+Function that queries the database for a user account when a user tries to login.
+If the login is successful, the upper menu panel reveals a favorites menu and the login
+section disappers. Otherwise, an alert window appears and says that logging in was incorrectly
+done.
+*/
+function login(){
+    $(document).on('click', '#login', function(){
+	var $email = $('#email').val();
+	var $password = $('#password').val();
+
+	$.ajax({
+	    url: "/ajax/login/" + $email + "/" + $password,
+	    dataType: "json",
+
+	}).done(function(data){
+
+	    if(data.result == "success"){
+
+		$('#loginPanel').remove();
+		var accountPanel = "<div id='accountPanel'> <ul class='nav'>	<li> <a href='/favorites'>" +
+		    "Favorites </a> </li> <li > <a href='/logout' id='logout'> Logout </a> </li> </ul> </div>"
+		$('#menuBar').append(accountPanel);
+	    }
+	    else
+		alert('Incorrect email or password.\nTry again or go to the register page to open a new account.');
+
+	});// end done
+
+	return false;
+    });// end click
+}
+
+/*
+Logout function that logs the user out of the system and adds the login panel to the top menu bar
+*/
+function logout(){
+
+    $(document).on('click', '#logout', function(){
+
+	$.ajax({
+	    url: "/ajax/logout/",
+	    dataType: "json",
+	    
+	}).done(function(data){
+
+	    $('#accountPanel').remove();
+	    
+	    if(data.result == "success"){
+	    var loginPanel = "<div id='loginPanel'><form class='navbar-form pull-right'>" +
+		"<input name='email'id='email' type='email' placeholder='Email' class='span2'>" +
+		"<input name='password' id='password' type='password' placeholder='Password' class='span2'>" +
+		"<button id ='login' class='btn'> Sign in </button>"  +
+		"</form></div>";
+	    $('#menuBar').append(loginPanel);
+	    }
+	});
+	return false
+    }); //end click
+
+}// end logout
+
+
+    </script>
+    <script>
+    /*
+      Loads functions that run after hte page has fully loaded
+     */
+    $(document).ready(function() {
+
+
+	login(); //prepares the login function for use
+	logout(); //prepares the logout function for use
+
+	//preapres the geolocation function for use
+	navigator.geolocation.getCurrentPosition(foundLocation, noLocation);
+	
+	
+	$('#searchButton').click(function(){
+
+	    if(validateSearch()){
+	    $('#loading').show();
+	    $("div[id$=dvProgress]").addClass("loading").fadeOut("fast");
+	    }
+	});
+
+	$("a.btnclick").each(function() {
+	    $(this).fancybox({
+		width:    600,
+		height:   500,
+		autoDimensions: false,
+		overlayOpacity: 0.6,
+		transitionIn: 'fade',
+		speedIn: 600
+	    }); // end fancybox
+	}); // end each
+    }); //end ready
+    </script>    
+</body>
+
+</html>

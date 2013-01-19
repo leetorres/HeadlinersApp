@@ -1,0 +1,24 @@
+
+=INFO REPORT==== 14-Dec-2012::05:22:24 ===
+Starting Boss in development mode....
+
+=INFO REPORT==== 14-Dec-2012::05:22:24 ===
+Starting master services on headliners_app@arch
+
+=INFO REPORT==== 14-Dec-2012::05:22:24 ===
+SSL:[]
+
+=INFO REPORT==== 14-Dec-2012::05:22:24 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::05:22:28 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::05:22:29 ===
+GET /contact [headliners_app] 200 437ms
+
+=INFO REPORT==== 14-Dec-2012::05:22:30 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::05:22:31 ===
+GET / [headliners_app] 200 634ms

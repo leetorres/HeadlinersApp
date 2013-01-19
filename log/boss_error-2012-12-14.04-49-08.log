@@ -1,0 +1,372 @@
+
+=INFO REPORT==== 14-Dec-2012::04:49:08 ===
+Starting Boss in development mode....
+
+=INFO REPORT==== 14-Dec-2012::04:49:08 ===
+Starting master services on headliners_app@arch
+
+=INFO REPORT==== 14-Dec-2012::04:49:08 ===
+SSL:[]
+
+=INFO REPORT==== 14-Dec-2012::04:49:08 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::04:49:14 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::04:49:15 ===
+GET /search/result/search-324 [headliners_app] 200 977ms
+
+=INFO REPORT==== 14-Dec-2012::04:49:16 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::04:49:16 ===
+GET /ajax/get_favorites/ [headliners_app] 200 528ms
+
+=INFO REPORT==== 14-Dec-2012::04:50:23 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::04:50:24 ===
+GET /ajax/get_tweet_page/Next [headliners_app] 200 617ms
+
+=INFO REPORT==== 14-Dec-2012::04:50:30 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::04:50:31 ===
+GET /ajax/get_tweet_page/Next [headliners_app] 200 582ms
+
+=INFO REPORT==== 14-Dec-2012::04:50:38 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::04:50:38 ===
+GET / [headliners_app] 200 630ms
+
+=INFO REPORT==== 14-Dec-2012::04:50:44 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::04:50:45 ===
+GET /contact [headliners_app] 200 537ms
+
+=INFO REPORT==== 14-Dec-2012::04:50:49 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::04:50:50 ===
+GET / [headliners_app] 200 609ms
+
+=INFO REPORT==== 14-Dec-2012::04:50:51 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::04:50:51 ===
+GET /getting_started [headliners_app] 200 547ms
+
+=INFO REPORT==== 14-Dec-2012::04:50:54 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::04:50:54 ===
+GET /about [headliners_app] 200 535ms
+
+=INFO REPORT==== 14-Dec-2012::04:50:58 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::04:50:58 ===
+GET /contact [headliners_app] 200 538ms
+
+=INFO REPORT==== 14-Dec-2012::04:51:02 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::04:51:03 ===
+GET / [headliners_app] 200 635ms
+
+=INFO REPORT==== 14-Dec-2012::04:51:06 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::04:51:06 ===
+GET / [headliners_app] 200 648ms
+
+=INFO REPORT==== 14-Dec-2012::04:51:09 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::04:51:10 ===
+GET / [headliners_app] 200 622ms
+
+=INFO REPORT==== 14-Dec-2012::04:51:12 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::04:51:12 ===
+GET / [headliners_app] 200 653ms
+
+=INFO REPORT==== 14-Dec-2012::04:53:23 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::04:53:23 ===
+GET / [headliners_app] 200 750ms
+
+=INFO REPORT==== 14-Dec-2012::04:53:24 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::04:53:25 ===
+GET / [headliners_app] 200 614ms
+
+=INFO REPORT==== 14-Dec-2012::04:53:25 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::04:53:26 ===
+GET / [headliners_app] 200 628ms
+
+=INFO REPORT==== 14-Dec-2012::04:53:27 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::04:53:28 ===
+GET /getting_started [headliners_app] 200 592ms
+
+=INFO REPORT==== 14-Dec-2012::04:53:29 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::04:53:30 ===
+GET / [headliners_app] 200 613ms
+
+=INFO REPORT==== 14-Dec-2012::04:53:31 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::04:53:32 ===
+GET /about [headliners_app] 200 565ms
+
+=INFO REPORT==== 14-Dec-2012::04:53:33 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::04:53:33 ===
+GET / [headliners_app] 200 625ms
+
+=INFO REPORT==== 14-Dec-2012::04:53:35 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::04:53:35 ===
+GET /contact [headliners_app] 200 590ms
+
+=INFO REPORT==== 14-Dec-2012::04:53:36 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::04:53:37 ===
+GET / [headliners_app] 200 609ms
+
+=INFO REPORT==== 14-Dec-2012::04:53:47 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::04:53:47 ===
+GET /ajax/login/user/password [headliners_app] 200 540ms
+
+=INFO REPORT==== 14-Dec-2012::04:53:48 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::04:53:49 ===
+GET /favorites [headliners_app] 200 717ms
+
+=INFO REPORT==== 14-Dec-2012::04:53:50 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::04:53:51 ===
+GET / [headliners_app] 200 611ms
+
+=INFO REPORT==== 14-Dec-2012::04:53:56 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::04:53:56 ===
+GET /how_it_works [headliners_app] 200 558ms
+
+=INFO REPORT==== 14-Dec-2012::04:56:31 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::04:56:31 ===
+GET / [headliners_app] 200 648ms
+
+=INFO REPORT==== 14-Dec-2012::04:56:32 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::04:56:32 ===
+GET /getting_started [headliners_app] 200 547ms
+
+=INFO REPORT==== 14-Dec-2012::04:56:33 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::04:56:34 ===
+GET / [headliners_app] 200 603ms
+
+=INFO REPORT==== 14-Dec-2012::04:56:35 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::04:56:36 ===
+GET /about [headliners_app] 200 545ms
+
+=INFO REPORT==== 14-Dec-2012::04:56:36 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::04:56:37 ===
+GET / [headliners_app] 200 639ms
+
+=INFO REPORT==== 14-Dec-2012::04:56:37 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::04:56:38 ===
+GET /contact [headliners_app] 200 525ms
+
+=INFO REPORT==== 14-Dec-2012::04:56:41 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::04:56:42 ===
+GET / [headliners_app] 200 635ms
+
+=INFO REPORT==== 14-Dec-2012::04:56:44 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::04:56:45 ===
+GET /favorites [headliners_app] 200 724ms
+
+=INFO REPORT==== 14-Dec-2012::04:56:46 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::04:56:46 ===
+GET /contact [headliners_app] 200 544ms
+
+=INFO REPORT==== 14-Dec-2012::04:56:54 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::04:56:55 ===
+GET /contact [headliners_app] 200 560ms
+
+=INFO REPORT==== 14-Dec-2012::04:56:57 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::04:56:58 ===
+GET /contact [headliners_app] 200 547ms
+
+=INFO REPORT==== 14-Dec-2012::04:56:59 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::04:57:00 ===
+GET / [headliners_app] 200 658ms
+
+=INFO REPORT==== 14-Dec-2012::04:57:01 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::04:57:02 ===
+GET /about [headliners_app] 200 545ms
+
+=INFO REPORT==== 14-Dec-2012::04:57:03 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::04:57:04 ===
+GET /contact [headliners_app] 200 558ms
+
+=INFO REPORT==== 14-Dec-2012::04:57:05 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::04:57:06 ===
+GET /contact [headliners_app] 200 536ms
+
+=INFO REPORT==== 14-Dec-2012::04:57:07 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::04:57:07 ===
+GET /contact [headliners_app] 200 558ms
+
+=INFO REPORT==== 14-Dec-2012::04:57:28 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::04:57:28 ===
+GET /contact [headliners_app] 200 600ms
+
+=INFO REPORT==== 14-Dec-2012::04:57:30 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::04:57:30 ===
+GET /favorites [headliners_app] 200 732ms
+
+=INFO REPORT==== 14-Dec-2012::04:57:32 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::04:57:32 ===
+GET /contact [headliners_app] 200 546ms
+
+=INFO REPORT==== 14-Dec-2012::04:57:33 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::04:57:33 ===
+GET /about [headliners_app] 200 527ms
+
+=INFO REPORT==== 14-Dec-2012::04:57:34 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::04:57:35 ===
+GET /getting_started [headliners_app] 200 558ms
+
+=INFO REPORT==== 14-Dec-2012::04:57:36 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::04:57:36 ===
+GET / [headliners_app] 200 627ms
+
+=INFO REPORT==== 14-Dec-2012::05:18:28 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::05:18:30 ===
+POST /search/result [headliners_app] 302 1972ms
+
+=INFO REPORT==== 14-Dec-2012::05:18:30 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::05:18:31 ===
+GET /search/result/search-325 [headliners_app] 200 722ms
+
+=INFO REPORT==== 14-Dec-2012::05:18:32 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::05:18:32 ===
+GET /ajax/get_favorites/ [headliners_app] 200 554ms
+
+=INFO REPORT==== 14-Dec-2012::05:18:51 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::05:18:51 ===
+GET /search/result/search-325 [headliners_app] 200 665ms
+
+=INFO REPORT==== 14-Dec-2012::05:18:52 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::05:18:53 ===
+GET /ajax/get_favorites/ [headliners_app] 200 559ms
+
+=INFO REPORT==== 14-Dec-2012::05:19:42 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::05:19:43 ===
+GET /search/result/search-325 [headliners_app] 200 661ms
+
+=INFO REPORT==== 14-Dec-2012::05:19:43 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::05:19:44 ===
+GET /ajax/get_favorites/ [headliners_app] 200 553ms
+
+=INFO REPORT==== 14-Dec-2012::05:19:46 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::05:19:46 ===
+GET / [headliners_app] 200 675ms
+
+=INFO REPORT==== 14-Dec-2012::05:20:07 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::05:20:07 ===
+GET / [headliners_app] 200 650ms
+
+=INFO REPORT==== 14-Dec-2012::05:20:23 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::05:20:24 ===
+GET /contact [headliners_app] 200 572ms
+
+=INFO REPORT==== 14-Dec-2012::05:20:26 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 14-Dec-2012::05:20:27 ===
+GET / [headliners_app] 200 665ms

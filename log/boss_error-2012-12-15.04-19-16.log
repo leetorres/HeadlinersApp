@@ -1,0 +1,54 @@
+
+=INFO REPORT==== 15-Dec-2012::04:19:16 ===
+Starting Boss in development mode....
+
+=INFO REPORT==== 15-Dec-2012::04:19:16 ===
+Starting master services on headliners_app@arch
+
+=INFO REPORT==== 15-Dec-2012::04:19:16 ===
+SSL:[]
+
+=INFO REPORT==== 15-Dec-2012::04:19:16 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 15-Dec-2012::04:19:17 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 15-Dec-2012::04:19:17 ===
+GET / [headliners_app] 200 113ms
+
+=INFO REPORT==== 15-Dec-2012::04:19:20 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 15-Dec-2012::04:19:20 ===
+GET / [headliners_app] 200 116ms
+
+=INFO REPORT==== 15-Dec-2012::04:19:21 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 15-Dec-2012::04:19:21 ===
+GET / [headliners_app] 200 121ms
+
+=INFO REPORT==== 15-Dec-2012::04:19:22 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 15-Dec-2012::04:19:22 ===
+GET / [headliners_app] 200 101ms
+
+=INFO REPORT==== 15-Dec-2012::04:19:24 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 15-Dec-2012::04:19:24 ===
+GET / [headliners_app] 200 116ms
+
+=INFO REPORT==== 15-Dec-2012::04:19:25 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 15-Dec-2012::04:19:25 ===
+GET / [headliners_app] 200 111ms
+
+=INFO REPORT==== 15-Dec-2012::04:19:35 ===
+Loading routes from "/home/lee/headlinersFinal/headliners/headliners_app/priv/headliners_app.routes" ....
+
+=INFO REPORT==== 15-Dec-2012::04:19:35 ===
+GET / [headliners_app] 200 120ms

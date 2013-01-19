@@ -1,0 +1,3 @@
+{application,headliners_app}.
+{packages,[controller,lib,mail,model]}.
+{modules,[]}.
